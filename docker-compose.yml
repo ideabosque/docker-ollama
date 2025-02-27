@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  ollama:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      # Mount a local folder for your models/cache
+      - ./models:/root/.ollama/models
+    environment:
+      # Set an env var so Ollama knows where to find models
+      - OLLAMA_MODELS=/root/.ollama/models
+      - OLLAMA_HOST=0.0.0.0
+    # By default we run "ollama serve" from the Dockerfile CMD
+    # If you want to override it, uncomment below:
+    # command: ["ollama", "serve"]

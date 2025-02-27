@@ -1,0 +1,7 @@
+.vscode/
+.env
+*.log
+*.pid
+www/projects
+python/.ssh
+models/
